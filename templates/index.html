@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Emotion Mapping to Emoticons</title>
+
+    <style>
+
+      h1{
+        text-align: center;
+        color: white;
+      }
+      .header{
+        background-color: #5BD8D7;
+        padding: 10px;
+      }
+      h3{
+        color: #5BD8D7;
+        text-align: center;
+        padding: 10px;
+      }
+      .gif {
+         width:400px;
+         object-fit: scale-down;
+		 padding-left: 30px;
+      }
+	  .emo{
+		width:500px;
+        object-fit: cover;
+	  }
+	  
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+        <h1>Emotion Mapping to Emoticons</h1>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="vid col-sm-5 col-md-6">
+          <h3>Video</h3>
+        </div>
+        <div class="emoji col-sm-5 offset-sm-2 col-md-6 offset-md-0">
+          <h3>Emoticons</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-md-5 col-lg-6">
+          <img class="emo" src="{{ url_for('video') }}"  style="border-radius:10px" />
+        </div>
+        <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+          <img class="gif" src="{{ url_for('stream') }}" alt = "not found" style="border-radius:10px" />
+        </div>
+      </div>
+    </div>
+    <!--div class="container">
+      <div class= "row">
+        <div class="col-5" >
+          <img src="{{ url_for('video') }}"  style="border-radius:10px"/>
+        </div>
+        <div class="col-5">
+          <img src="{{ url_for('stream') }}" alt = "not found" />
+        </div>
+      </div>
+    </div-->
+
+    <!--div>
+      <img src="{{ url_for('video') }}" width="650" height="500"/>
+      <img src="{{ url_for('stream') }}" width="650" height="500" />
+    </div-->
+
+  </body>
+</html>
