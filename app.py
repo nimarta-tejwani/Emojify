@@ -4,7 +4,7 @@ from deepface import DeepFace
 
 app = Flask(__name__)
 
-camera = cv2.VideoCapture(0)
+camera = cv2.VideoCapture("fac_exp.mp4")
 # Check if the webcam is opened correctly
 if not camera.isOpened():
     raise IOError("Cannot open webcam")
@@ -37,8 +37,9 @@ def get_output():
             break
         else:
             result = DeepFace.analyze(frame, actions = ['emotion'], enforce_detection=False)
-            print(result['dominant_emotion'])
-            emotion = result['dominant_emotion']
+            print(result)
+            print(result[0]['dominant_emotion'])
+            emotion = result[0]['dominant_emotion']
             
             gray_img = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
             faceDetector = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
@@ -58,7 +59,9 @@ def get_output():
             
 
             yield (b'--frame\r\n'
-                b'Content-Type: image/jpeg\r\n\r\n' + img + b'\r\n')
+                b'Content-Type: image/jpeg\r\n\r\n' + img + b'\r\n'
+                   + emotion.encode('utf-8') + b'\r\n'
+                   )
 
 
 @app.route('/')
